@@ -36,13 +36,10 @@ trait TranslateableTrait
         $this->currentLocalization = $currentLocalization;
     }
 
-    public function getLocale(?Localization $localization = null): string
-    {
-        return $this->doGetTranslation($localization)->getLocale();
-    }
-
-    protected function doGetTranslation(?Localization $localization = null): TranslationInterface
-    {
+    public function getTranslation(
+        ?Localization $localization = null,
+        bool $createIfNotExist = false
+    ): ?TranslationInterface {
         $localization = $localization ?: $this->currentLocalization;
 
         foreach ($this->translations as $translation) {
@@ -51,9 +48,12 @@ trait TranslateableTrait
             }
         }
 
-        return $this->createTranslation($localization);
+        if ($createIfNotExist) {
+            return $this->createTranslation($localization);
+        }
+
+        return null;
     }
 
     abstract protected function createTranslation(Localization $localization): TranslationInterface;
-
 }
