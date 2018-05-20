@@ -10,6 +10,9 @@
         "symfony/dependency-injection": "^3.4",
         "symfony/http-kernel": "^3.4"
     },
+    "require-dev": {
+        "sulu/sulu": "^2.0"
+    },
     "autoload": {
         "psr-4": {
             "Chekov\\Bundle\\ModelBundle\\": ""
