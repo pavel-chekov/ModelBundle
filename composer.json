@@ -1,0 +1,32 @@
+{
+    "name": "chekov/model-bundle",
+    "description": "A bundle which provides common model functions.",
+    "type": "sulu-bundle",
+    "require": {
+        "symfony/config": "^3.4",
+        "symfony/dependency-injection": "^3.4",
+        "doctrine/orm": "^2.5.3",
+        "php": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chekov\\Bundle\ModelBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sulu Chekov Community",
+            "homepage": "https://github.com/pavel-chekov/SuluModelBundle/graphs/contributors"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
