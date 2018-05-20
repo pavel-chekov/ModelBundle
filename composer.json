@@ -3,14 +3,15 @@
     "description": "A bundle which provides common model functions.",
     "type": "sulu-bundle",
     "require": {
-        "symfony/config": "^3.4",
-        "symfony/dependency-injection": "^3.4",
         "doctrine/orm": "^2.5.3",
-        "php": "^7.1"
+        "php": "^7.1",
+        "ramsey/uuid": "^3.1",
+        "symfony/config": "^3.4",
+        "symfony/dependency-injection": "^3.4"
     },
     "autoload": {
         "psr-4": {
-            "Chekov\\Bundle\ModelBundle\\": ""
+            "Chekov\\Bundle\\ModelBundle\\": ""
         },
         "exclude-from-classmap": [
             "/Tests/"
