@@ -13,6 +13,7 @@ namespace Chekov\Bundle\ModelBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
@@ -21,8 +22,25 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class ChekovModelExtension extends Extension
+class ChekovModelExtension extends Extension implements PrependExtensionInterface
 {
+    public function prepend(ContainerBuilder $container)
+    {
+        $container->prependExtensionConfig(
+            'doctrine',
+            [
+                'orm' => [
+                    'mappings' => [
+                        'ChekovModelBundle' => [
+                            'alias' => 'ChekovModelBundle',
+                            'prefix' => 'Chekov\Bundle\ModelBundle\Model',
+                        ],
+                    ],
+                ],
+            ]
+        );
+    }
+
     /**
      * {@inheritdoc}
      */
